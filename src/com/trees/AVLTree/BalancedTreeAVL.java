@@ -63,20 +63,20 @@ public class BalancedTreeAVL {
         return getHeight(temp.left_child) - getHeight(temp.right_child);
     }
 
-    public void insert(int key, String data){
-        root = insertRecursive(root, key, data);
+    public void insert(int key){
+        root = insertRecursive(root, key);
     }
 
-    public Node insertRecursive(Node node, int key, String data){
+    public Node insertRecursive(Node node, int key){
         if (node == null){
-            return new Node(key, data);
+            return new Node(key);
         }
 
         if (key < node.key){
-            node.left_child = insertRecursive(node.left_child, key, data);
+            node.left_child = insertRecursive(node.left_child, key);
         }
         else if (key > node.key){
-            node.right_child = insertRecursive(node.right_child, key, data);
+            node.right_child = insertRecursive(node.right_child, key);
         }
         else 
             return node;
@@ -167,7 +167,7 @@ public class BalancedTreeAVL {
     public void printTree(Node node, String prefix, boolean isLeft) {
         if (node != null) {
             printTree(node.right_child, prefix + (isLeft ? "│   " : "    "), false);
-            System.out.println(prefix + (isLeft ? "└── " : "┌── ") + node.key + " (" + node.data + ")");
+            System.out.println(prefix + (isLeft ? "└── " : "┌── ") + node.key + "(" + node.height+ ")");
             printTree(node.left_child, prefix + (isLeft ? "    " : "│   "), true);
         }
     }

@@ -7,8 +7,8 @@ public class BinaryTree {
         root = null;
     }
 
-    public void insertion(int key, String data){
-        Node temp = new Node(key, data);
+    public void insertion(int key){
+        Node temp = new Node(key);
         if(root == null){
             root = temp;
             root.parrent = null;
@@ -91,7 +91,6 @@ public class BinaryTree {
         Node successor = findMin(nodeToDelete.right_child);
 
         nodeToDelete.key = successor.key;
-        nodeToDelete.data = successor.data;
 
         if (successor.parrent.left_child == successor) {
             successor.parrent.left_child = successor.right_child;
@@ -110,39 +109,25 @@ public class BinaryTree {
         }
         return node;
     }
-
-    public void rightRotate(Node temp) {
-        if (temp == null || temp.left_child == null) {
-            System.out.println("Right rotation not possible");
-            return;
-        }
     
-        Node newRoot = temp.left_child;
-        Node parent = temp.parrent;
-
-        temp.left_child = newRoot.right_child;
-        if (newRoot.right_child != null) {
-            newRoot.right_child.parrent = temp;
+    public int getHeight(Node node) {
+        if (node == null) {
+            return 0;
         }
+        int leftHeight = getHeight(node.left_child);
+        int rightHeight = getHeight(node.right_child);
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
     
-        newRoot.right_child = temp;
-        temp.parrent = newRoot;
-    
-        newRoot.parrent = parent;
-        if (parent == null) {
-            root = newRoot;
-        } else if (parent.left_child == temp) {
-            parent.left_child = newRoot;
-        } else {
-            parent.right_child = newRoot;
-        }
+    public int getTreeHeight() {
+        return getHeight(root);
     }
     
 
     public void printTree(Node node, String prefix, boolean isLeft) {
         if (node != null) {
             printTree(node.right_child, prefix + (isLeft ? "│   " : "    "), false);
-            System.out.println(prefix + (isLeft ? "└── " : "┌── ") + node.key + " (" + node.data + ")");
+            System.out.println(prefix + (isLeft ? "└── " : "┌── ") + node.key);
             printTree(node.left_child, prefix + (isLeft ? "    " : "│   "), true);
         }
     }   

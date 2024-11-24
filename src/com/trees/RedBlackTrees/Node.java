@@ -3,11 +3,10 @@ package com.trees.RedBlackTrees;
 public class Node {
     public Node left_child, right_child, parent;
     public int key;
-    public String data, color;
+    public String color;
 
-    public Node(int key, String data){
+    public Node(int key){
         this.key = key;
-        this.data = data;
         this.color = "RED";
         this.parent = this.left_child = this.right_child = null;
     }
