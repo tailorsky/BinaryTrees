@@ -1,5 +1,8 @@
 package com.trees.BSTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BinaryTree {
     public Node root;
 
@@ -129,6 +132,24 @@ public class BinaryTree {
             printTree(node.right_child, prefix + (isLeft ? "│   " : "    "), false);
             System.out.println(prefix + (isLeft ? "└── " : "┌── ") + node.key);
             printTree(node.left_child, prefix + (isLeft ? "    " : "│   "), true);
+        }
+    }
+    public void wideTraversal(Node root) {
+        if (root == null) return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.println(current.key);
+            
+            if (current.left_child != null) {
+                queue.add(current.left_child);
+            }
+            if (current.right_child != null) {
+                queue.add(current.right_child);
+            }
         }
     }   
 }

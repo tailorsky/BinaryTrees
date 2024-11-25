@@ -1,5 +1,8 @@
 package com.trees.AVLTree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class BalancedTreeAVL {
     public Node root;
 
@@ -171,4 +174,23 @@ public class BalancedTreeAVL {
             printTree(node.left_child, prefix + (isLeft ? "    " : "│   "), true);
         }
     }
+
+        public void wideTraversal(Node root) {
+        if (root == null) return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.println(current.key);
+            
+            if (current.left_child != null) {
+                queue.add(current.left_child);
+            }
+            if (current.right_child != null) {
+                queue.add(current.right_child);
+            }
+        }
+    }   
 }

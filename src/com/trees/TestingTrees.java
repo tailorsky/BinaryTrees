@@ -27,7 +27,7 @@ public class TestingTrees {
         processTree(avlTree, keys, step, maxKeys, filePath_AVL, "AVL");
 
         RedBlackTree rbTree = new RedBlackTree();
-        processTree(rbTree, keys, step, maxKeys, filePath_RB, "Red-Black");
+        processTree(rbTree, keys, step, maxKeys, filePath_RB, "RedBlack");
 
         BinaryTree bsTree = new BinaryTree();
         processTree(bsTree, randKeys, step, maxKeys, filePath_BS, "Binary");
