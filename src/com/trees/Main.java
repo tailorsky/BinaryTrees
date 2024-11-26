@@ -6,17 +6,11 @@ import com.trees.RedBlackTrees.Node;
 
 public class Main {
     public static void main(String[] args) {
-        RedBlackTree tree = new RedBlackTree();
-       tree.insert(20);
-       tree.insert(30);
-       tree.insert(5);
-       tree.insert(15);
-       tree.insert(69);
-       tree.insert(25);
-       tree.insert(10);
-
-       tree.printTree(tree.root, " ", false);
-       tree.depthTraversal(tree.root);
-       //tree.wideTraversal(tree.root);
+        BinaryTree tree = new BinaryTree();
+        tree.insertion(1);
+        tree.insertion(2);
+        tree.insertion(3);
+        tree.insertion(4);
+        tree.printTree(tree.root, " ", false);
     }
 }
