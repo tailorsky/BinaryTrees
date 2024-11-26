@@ -134,6 +134,15 @@ public class BinaryTree {
             printTree(node.left_child, prefix + (isLeft ? "    " : "│   "), true);
         }
     }
+
+    public void depthTraversal(Node node) {
+        if (node != null) {
+            System.out.print(node.key + " ");
+            depthTraversal(node.left_child);
+            depthTraversal(node.right_child);
+        }
+    }
+
     public void wideTraversal(Node root) {
         if (root == null) return;
 

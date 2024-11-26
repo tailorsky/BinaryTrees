@@ -18,6 +18,7 @@ public class TestingTrees {
         String filePath_RB = "tree_heights_RB.csv";
 
         String filePath_BS = "tree_heights_BS.csv";
+        String filePath_worseBS = "tree_heights_BSworse.csv";
 
 
         ArrayList<Integer> keys = generateKeys(maxKeys);
@@ -31,6 +32,9 @@ public class TestingTrees {
 
         BinaryTree bsTree = new BinaryTree();
         processTree(bsTree, randKeys, step, maxKeys, filePath_BS, "Binary");
+
+        BinaryTree bsTree2 = new BinaryTree();
+        processTree(bsTree2, keys, step, maxKeys, filePath_worseBS, "BinaryWorse");
     }
 
     public static ArrayList<Integer> generateKeys(int maxKeys) {

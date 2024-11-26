@@ -1,5 +1,8 @@
 package com.trees.RedBlackTrees;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class RedBlackTree {
     public Node root;
     Node NIL;
@@ -278,6 +281,32 @@ public class RedBlackTree {
             printTree(node.right_child, prefix + (isLeft ? "│   " : "    "), false);
             System.out.println(prefix + (isLeft ? "└── " : "┌── ") + node.key + "(" + node.color.charAt(0)+ ")");
             printTree(node.left_child, prefix + (isLeft ? "    " : "│   "), true);
+        }
+    }   
+
+    public void depthTraversal(Node node) {
+        if (node != NIL) {
+            System.out.print(node.key + " ");
+            depthTraversal(node.left_child);
+            depthTraversal(node.right_child);
+        }
+    }
+    public void wideTraversal(Node root) {
+        if (root == null) return;
+
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node current = queue.poll();
+            System.out.println(current.key);
+            
+            if (current.left_child != null) {
+                queue.add(current.left_child);
+            }
+            if (current.right_child != null) {
+                queue.add(current.right_child);
+            }
         }
     }   
 }
