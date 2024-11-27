@@ -100,7 +100,7 @@ public class BalancedTreeAVL {
             node.right_child = rightRotation(node.right_child);
             return leftRotation(node);
         }
-        
+
         return node;
     }
 
@@ -143,7 +143,7 @@ public class BalancedTreeAVL {
         int balance = getBalance(root);
 
 
-        if (balance > 1 && getBalance(root.left_child) >= 0)
+        /*if (balance > 1 && getBalance(root.left_child) >= 0)
             return rightRotation(root);
         if (balance < -1 && getBalance(root.left_child) < 0){
             root.left_child = leftRotation(root.left_child);
@@ -154,7 +154,22 @@ public class BalancedTreeAVL {
         if (balance < -1 && getBalance(root.right_child) <= 0){
             root.right_child = rightRotation(root.right_child);
             return leftRotation(root);
+        }*/
+
+
+        if (balance > 1 && key < root.left_child.key)
+            return rightRotation(root);
+        if (balance < -1 && key > root.right_child.key)
+            return leftRotation(root);
+        if (balance > 1 && key > root.left_child.key){
+            root.left_child = leftRotation(root.left_child);
+            return rightRotation(root);
         }
+        if (balance < -1 && key < root.right_child.key){
+            root.right_child = rightRotation(root.right_child);
+            return leftRotation(root);
+        }
+
         return root;
     }
 
