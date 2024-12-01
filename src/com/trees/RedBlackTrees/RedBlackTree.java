@@ -145,29 +145,22 @@ public class RedBlackTree {
         while (nNode != root && nNode.color.equals("BLACK")) {
             if (nNode == nNode.parent.left_child) {
                 Node sibling = nNode.parent.right_child;
-    
-                // Случай 1: Брат узла красный
                 if (sibling.color.equals("RED")) {
                     sibling.setBlackColor();
                     nNode.parent.setRedColor();
                     leftRotate(nNode.parent);
                     sibling = nNode.parent.right_child;
                 }
-    
-                // Случай 2: Брат узла чёрный и оба его ребёнка чёрные
                 if (sibling.left_child.color.equals("BLACK") && sibling.right_child.color.equals("BLACK")) {
                     sibling.setRedColor();
-                    nNode = nNode.parent; // Поднимаемся выше
+                    nNode = nNode.parent;
                 } else {
-                    // Случай 3: Брат чёрный, левый ребёнок красный, правый чёрный
                     if (sibling.right_child.color.equals("BLACK")) {
                         sibling.left_child.setBlackColor();
                         sibling.setRedColor();
                         rightRotate(sibling);
                         sibling = nNode.parent.right_child;
                     }
-    
-                    // Случай 4: Брат чёрный и правый ребёнок красный
                     sibling.color = nNode.parent.color;
                     nNode.parent.setBlackColor();
                     sibling.right_child.setBlackColor();
@@ -175,7 +168,6 @@ public class RedBlackTree {
                     nNode = root;
                 }
             } else {
-                // Аналогично для правого поддерева (симметрия)
                 Node sibling = nNode.parent.left_child;
     
                 if (sibling.color.equals("RED")) {
@@ -284,11 +276,27 @@ public class RedBlackTree {
         }
     }   
 
-    public void depthTraversal(Node node) {
+    public void postorderTraversal(Node node) {
+        if (node != NIL) {
+            postorderTraversal(node.left_child);
+            postorderTraversal(node.right_child);
+            System.out.print(node.key + " ");
+        }
+    }
+
+    public void inorderTraversal(Node node) {
+        if (node != NIL) {
+            inorderTraversal(node.left_child);
+            System.out.print(node.key + " ");
+            inorderTraversal(node.right_child);
+        }
+    }
+
+    public void preorderTraversal(Node node) {
         if (node != NIL) {
             System.out.print(node.key + " ");
-            depthTraversal(node.left_child);
-            depthTraversal(node.right_child);
+            preorderTraversal(node.left_child);
+            preorderTraversal(node.right_child);
         }
     }
     public void wideTraversal(Node root) {

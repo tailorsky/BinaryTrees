@@ -190,11 +190,27 @@ public class BalancedTreeAVL {
         }
     }
 
-    public void depthTraversal(Node node) {
+    public void preorderTraversal(Node node) {
+        if (node != null) {
+            preorderTraversal(node.left_child);
+            preorderTraversal(node.right_child);
+            System.out.print(node.key + " ");
+        }
+    }
+
+    public void inorderTraversal(Node node) {
+        if (node != null) {
+            inorderTraversal(node.left_child);
+            System.out.print(node.key + " ");
+            inorderTraversal(node.right_child);
+        }
+    }
+
+    public void postorderTraversal(Node node) {
         if (node != null) {
             System.out.print(node.key + " ");
-            depthTraversal(node.left_child);
-            depthTraversal(node.right_child);
+            postorderTraversal(node.left_child);
+            postorderTraversal(node.right_child);
         }
     }
 

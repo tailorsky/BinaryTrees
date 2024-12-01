@@ -20,7 +20,12 @@ public class Main {
         tree.insert(96);
         tree.insert(95);
 
-        tree.delete(46);
-        tree.printTree(tree.root, " ", false);
+        tree.printTree(tree.root, "", false);
+
+        tree.postorderTraversal(tree.root);
+        System.out.println("\n");
+        tree.inorderTraversal(tree.root);
+        System.out.println("\n");
+        tree.preorderTraversal(tree.root);
     }
 }
